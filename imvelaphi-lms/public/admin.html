@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Imvelaphi LMS</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="app-shell">
+
+<header class="app-header" id="headerMount"></header>
+
+<main class="app-main">
+  <h2 class="page-title">Programme overview</h2>
+  <p class="page-sub">Everyone registered on Imvelaphi LMS, and the course catalogue.</p>
+
+  <div class="stat-strip" id="statStrip"></div>
+
+  <div class="panel">
+    <h3>Add a lecturer</h3>
+    <p style="font-size:0.85rem; color:var(--muted); margin-bottom:16px;">Lecturers can't register themselves — create their account here. They can log in immediately with the email and password you set.</p>
+    <form id="addLecturerForm">
+      <div class="field-row">
+        <div class="field"><label>First name</label><input type="text" id="lectFirstName" required></div>
+        <div class="field"><label>Last name</label><input type="text" id="lectLastName" required></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Email</label><input type="email" id="lectEmail" required></div>
+        <div class="field"><label>Starting password</label><input type="password" id="lectPassword" required minlength="4"></div>
+      </div>
+      <div class="field"><label>Location (optional)</label><input type="text" id="lectLocation" placeholder="City, Province"></div>
+      <button type="submit" class="btn btn-teal btn-sm" id="addLecturerBtn">Create lecturer account</button>
+    </form>
+  </div>
+
+  <div class="panel">
+    <h3>Users</h3>
+    <table class="data-table">
+      <thead><tr><th>Name</th><th>Role</th><th>Age</th><th>Gender</th><th>Location</th><th>Email</th></tr></thead>
+      <tbody id="userBody"><tr><td colspan="6" style="text-align:center; color:var(--muted); padding:24px;">Loading…</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <h3>Course catalogue</h3>
+    <table class="data-table">
+      <thead><tr><th>Course</th><th>Category</th><th>Videos</th><th>Lecturer</th></tr></thead>
+      <tbody id="courseBody"><tr><td colspan="4" style="text-align:center; color:var(--muted); padding:24px;">Loading…</td></tr></tbody>
+    </table>
+  </div>
+</main>
+
+<script src="js/app.js"></script>
+<script>
+  const user = STORE.requireRole(['admin']);
+  let allLecturers = [];
+
+  async function refreshUsersAndStats() {
+    const [statsRes, usersRes] = await Promise.all([STORE.adminStats(), STORE.adminUsers()]);
+    if (statsRes.success) {
+      const s = statsRes.stats;
+      document.getElementById('statStrip').innerHTML = `
+        <div class="stat-box"><div class="n">${s.total}</div><div class="l">Total users</div></div>
+        <div class="stat-box"><div class="n">${s.students}</div><div class="l">Students</div></div>
+        <div class="stat-box"><div class="n">${s.lecturers}</div><div class="l">Lecturers</div></div>
+        <div class="stat-box"><div class="n">${s.courses}</div><div class="l">Courses live</div></div>
+      `;
+    }
+    if (usersRes.success) {
+      document.getElementById('userBody').innerHTML = usersRes.users.map(u => `
+        <tr>
+          <td>${u.firstName} ${u.lastName}</td>
+          <td style="text-transform:capitalize;">${u.role}</td>
+          <td>${u.age ?? '—'}</td>
+          <td>${u.gender ?? '—'}</td>
+          <td>${u.location ?? '—'}</td>
+          <td>${u.email}</td>
+        </tr>`).join('');
+    }
+  }
+
+  async function loadCourses() {
+    const [coursesRes, lecturersRes] = await Promise.all([STORE.adminCourses(), STORE.adminLecturers()]);
+    if (lecturersRes.success) allLecturers = lecturersRes.lecturers;
+    if (!coursesRes.success) return;
+
+    document.getElementById('courseBody').innerHTML = coursesRes.courses.map(c => `
+      <tr>
+        <td>${c.title}</td>
+        <td>${c.tag}</td>
+        <td>${c.videoCount}</td>
+        <td>
+          <select class="lecturer-select" data-course="${c.id}" onchange="reassignLecturer('${c.id}', this.value)">
+            <option value="">— unassigned —</option>
+            ${allLecturers.map(l => `<option value="${l.id}" ${l.id === c.lecturerId ? 'selected' : ''}>${l.firstName} ${l.lastName}</option>`).join('')}
+          </select>
+        </td>
+      </tr>`).join('') || `<tr><td colspan="4" style="text-align:center; color:var(--muted); padding:24px;">No courses yet.</td></tr>`;
+  }
+
+  async function reassignLecturer(courseId, lecturerId) {
+    if (!lecturerId) return; // unassigning isn't supported server-side; ignore the placeholder option
+    const res = await STORE.adminSetCourseLecturer(courseId, lecturerId);
+    if (!res.success) { alert(res.message || 'Could not update the lecturer for this course.'); loadCourses(); return; }
+    refreshUsersAndStats();
+  }
+  window.reassignLecturer = reassignLecturer;
+
+  if (user) {
+    mountChatWidget();
+    renderAppHeader('headerMount', 'Admin overview');
+    refreshUsersAndStats();
+    loadCourses();
+
+    document.getElementById('addLecturerForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = document.getElementById('addLecturerBtn');
+      btn.disabled = true; btn.textContent = 'Creating…';
+
+      const payload = {
+        firstName: document.getElementById('lectFirstName').value.trim(),
+        lastName: document.getElementById('lectLastName').value.trim(),
+        email: document.getElementById('lectEmail').value.trim(),
+        password: document.getElementById('lectPassword').value,
+        location: document.getElementById('lectLocation').value.trim()
+      };
+      const res = await STORE.adminCreateLecturer(payload);
+      btn.disabled = false; btn.textContent = 'Create lecturer account';
+
+      if (res.success) {
+        alert(`Lecturer account created for ${res.lecturer.firstName} ${res.lecturer.lastName}. They can log in now with ${res.lecturer.email}.`);
+        e.target.reset();
+        refreshUsersAndStats();
+        loadCourses();
+      } else {
+        alert(res.message || 'Could not create the lecturer account.');
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
