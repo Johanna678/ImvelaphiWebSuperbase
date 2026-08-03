@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imvelaphi Technologies — LMS</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <div class="mark"><img src="images/logo.png" alt="Imvelaphi Technologies logo"></div>
+    <h1>Imvelaphi <span>LMS</span></h1>
+  </a>
+  <div class="nav-links">
+    <a class="link hide-mobile" href="#courses">Courses</a>
+    <a class="link hide-mobile" href="#about">About</a>
+    <a class="link hide-mobile" href="#gallery">Gallery</a>
+    <a class="link" onclick="openAuth('login')">Log in</a>
+    <a class="btn btn-primary btn-sm" onclick="openAuth('register')">Get started</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <h2>Learn robotics/IoT &amp; innovation — <em>the Imvelaphi way</em></h2>
+    <p class="lead">Practical technology training for students and young innovators in South Africa, taught by the team behind Imvelaphi Technologies' robotics, biotech and 3D-printing work.</p>
+    <div class="hero-buttons">
+      <a class="btn btn-primary" onclick="openAuth('register')">Enrol as a student</a>
+      <a class="btn btn-outline" href="#courses">Browse courses</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>3</b><span>Course tracks</span></div>
+      <div class="stat"><b>Electronics</b><span>Circuits &amp; hardware</span></div>
+      <div class="stat"><b>Robotics / IoT</b><span>Sensors &amp; smart devices</span></div>
+      <div class="stat"><b>Innovation</b><span>Design &amp; build thinking</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="courses">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Featured tracks</div>
+      <h3>Pick a course, work through videos, prove it with a quiz</h3>
+      <p>Every course is a sequence of short videos, each followed by a quiz. Your dashboard tracks how far you've gotten and how well you scored.</p>
+    </div>
+    <div class="grid" id="courseGrid"></div>
+  </div>
+</section>
+
+<section class="section tint" id="about">
+  <div class="container about-wrap-stacked">
+    <div>
+      <div class="eyebrow">About us</div>
+      <h3 style="font-family:var(--font-display); font-size:1.9rem; color:var(--ink); margin:12px 0 18px;">Imvelaphi Technologies</h3>
+      <p>Imvelaphi Technologies stands at the forefront of science, technology and engineering — pioneering robotics, biotechnology and 3D-printing solutions tailored to empower the disabled community, including custom, cost-effective 3D-printed prosthetic limbs with robotic elements.</p>
+      <p>Beyond innovation, Imvelaphi invests in the next generation through skills-development programmes in robotics/IoT and innovation — which is exactly what this LMS is built to deliver.</p>
+    </div>
+    <div class="feature-shot">
+      <img src="images/tech-lab-showcase.jpg" alt="Imvelaphi Technologies Tech Lab showcase">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Gallery</div>
+      <h3>Inside the lab</h3>
+      <p>A look at the robotics, electronics and prosthetics work coming out of Imvelaphi Technologies.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="images/gallery-1.jpg" alt="Imvelaphi lab work"></div>
+      <div class="gallery-item"><img src="images/gallery-2.jpg" alt="Imvelaphi lab work"></div>
+      <div class="gallery-item"><img src="images/gallery-3.jpg" alt="Imvelaphi lab work"></div>
+      <div class="gallery-item"><img src="images/gallery-4.jpg" alt="Imvelaphi lab work"></div>
+      <div class="gallery-item"><img src="images/gallery-5.jpg" alt="Imvelaphi lab work"></div>
+      <div class="gallery-item"><img src="images/lab-feature-2.jpg" alt="Imvelaphi tech lab render"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="container" style="text-align:center;">
+    <div class="rule center" style="margin-bottom:20px;"></div>
+    <h3 style="font-family:var(--font-display); font-size:1.8rem; margin-bottom:14px;">Three roles, one platform</h3>
+    <p style="color:rgba(255,255,255,0.6); max-width:560px; margin:0 auto 44px;">Students learn and track progress. Lecturers upload content and follow every learner's performance. Admins oversee the whole programme.</p>
+    <div class="grid">
+      <div class="card" style="background:rgba(255,255,255,0.04); box-shadow:none; border:1px solid rgba(255,255,255,0.1);">
+        <div class="icon-badge"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h4 style="color:#fff;">Student</h4>
+        <p style="color:rgba(255,255,255,0.55);">Watch course videos, take quizzes, and see your progress grow on your dashboard.</p>
+      </div>
+      <div class="card" style="background:rgba(255,255,255,0.04); box-shadow:none; border:1px solid rgba(255,255,255,0.1);">
+        <div class="icon-badge"><i class="fa-solid fa-chalkboard-user"></i></div>
+        <h4 style="color:#fff;">Lecturer</h4>
+        <p style="color:rgba(255,255,255,0.55);">Upload videos and documents, and monitor every learner's progress and quiz scores.</p>
+      </div>
+      <div class="card" style="background:rgba(255,255,255,0.04); box-shadow:none; border:1px solid rgba(255,255,255,0.1);">
+        <div class="icon-badge"><i class="fa-solid fa-user-shield"></i></div>
+        <h4 style="color:#fff;">Admin</h4>
+        <p style="color:rgba(255,255,255,0.55);">Oversee learners, lecturers and course catalogue across the programme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <img src="images/logo.png" alt="Imvelaphi Technologies logo" style="width:40px; height:40px; border-radius:9px; object-fit:cover;">
+      <div>
+        <h5>Imvelaphi Technologies</h5>
+        <p>Robotics · Biotechnology · 3D printing · Skills development</p>
+      </div>
+    </div>
+    <div>
+      <h5>Learn</h5>
+      <p><a href="#courses" style="text-decoration:none; color:inherit;">Course catalogue</a></p>
+      <p><a href="#gallery" style="text-decoration:none; color:inherit;">Gallery</a></p>
+    </div>
+  </div>
+  <div class="container fine">&copy; 2026 Imvelaphi Technologies Lab. All rights reserved.</div>
+</footer>
+
+<!-- Auth Modal -->
+<div id="authModal" class="modal-backdrop">
+  <div class="modal-box" style="position:relative;">
+    <button class="close-x" onclick="closeAuth()"><i class="fa-solid fa-xmark"></i></button>
+    <h2 id="authTitle">Welcome back</h2>
+    <p class="modal-sub" id="authSub">Log in to continue your courses.</p>
+    <div id="alertMessage" class="alert"></div>
+
+    <!-- Login -->
+    <form id="loginForm">
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="loginEmail" required placeholder="you@example.com">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="loginPassword" required placeholder="••••••••">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;">Log in</button>
+      <p class="switch-line">New here? <a onclick="showRegister()">Create an account</a></p>
+    </form>
+
+    <!-- Register (students only — lecturer accounts are created by an admin) -->
+    <form id="registerForm" class="hidden">
+      <p style="font-size:0.82rem; color:var(--muted); margin:-6px 0 18px;">This creates a <strong>student</strong> account and enrols you in every course. Lecturer and admin accounts are set up by the Imvelaphi team.</p>
+      <div class="field-row">
+        <div class="field"><label>First name</label><input type="text" id="regFirstName" required></div>
+        <div class="field"><label>Last name</label><input type="text" id="regLastName" required></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Age</label><input type="number" id="regAge" min="5" max="100" required></div>
+        <div class="field">
+          <label>Gender</label>
+          <select id="regGender" required>
+            <option value="">Select…</option>
+            <option>Female</option><option>Male</option><option>Non-binary</option><option>Prefer not to say</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>Location</label>
+        <input type="text" id="regLocation" placeholder="City, Province" required>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="regEmail" required>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="regPassword" required minlength="4">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;">Create account</button>
+      <p class="switch-line">Already registered? <a onclick="showLogin()">Log in</a></p>
+    </form>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+  mountChatWidget();
+
+  async function renderCourses() {
+    const grid = document.getElementById('courseGrid');
+    const data = await STORE.getCourses();
+    if (!data.success) return;
+    grid.innerHTML = data.courses.map(c => `
+      <div class="card" onclick="openAuth('register')">
+        ${c.imageUrl ? `<img class="card-img" src="${c.imageUrl}" alt="${c.title}">` : ''}
+        <span class="tag">${c.tag}</span>
+        <div class="icon-badge"><i class="${c.icon}"></i></div>
+        <h4>${c.title}</h4>
+        <p>${c.description}</p>
+      </div>`).join('');
+  }
+  renderCourses();
+
+  // If already logged in, send straight to the right dashboard
+  (function redirectIfSession(){
+    const u = STORE.currentUser();
+    if (u) {
+      if (u.role === 'lecturer') window.location.href = 'lecturer.html';
+      else if (u.role === 'admin') window.location.href = 'admin.html';
+      else window.location.href = 'dashboard.html';
+    }
+  })();
+
+  function openAuth(mode) {
+    document.getElementById('authModal').classList.add('open');
+    document.getElementById('alertMessage').style.display = 'none';
+    if (mode === 'register') showRegister(); else showLogin();
+  }
+  function closeAuth() { document.getElementById('authModal').classList.remove('open'); }
+
+  function showRegister() {
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('registerForm').classList.remove('hidden');
+    document.getElementById('authTitle').textContent = 'Create your student account';
+    document.getElementById('authSub').textContent = 'Join Imvelaphi LMS and start learning.';
+  }
+  function showLogin() {
+    document.getElementById('registerForm').classList.add('hidden');
+    document.getElementById('loginForm').classList.remove('hidden');
+    document.getElementById('authTitle').textContent = 'Welcome back';
+    document.getElementById('authSub').textContent = 'Log in to continue your courses.';
+  }
+  function showAlert(msg, type) {
+    const el = document.getElementById('alertMessage');
+    el.textContent = msg; el.className = 'alert alert-' + type; el.style.display = 'block';
+  }
+  function redirectForRole(role) {
+    if (role === 'lecturer') window.location.href = 'lecturer.html';
+    else if (role === 'admin') window.location.href = 'admin.html';
+    else window.location.href = 'dashboard.html';
+  }
+
+  document.getElementById('loginForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Logging in…';
+    const res = await STORE.login(document.getElementById('loginEmail').value, document.getElementById('loginPassword').value);
+    if (res.success) { showAlert('Login successful — redirecting…','success'); setTimeout(()=>redirectForRole(res.user.role), 500); }
+    else { showAlert(res.message, 'error'); btn.disabled = false; btn.textContent = 'Log in'; }
+  });
+
+  document.getElementById('registerForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Creating account…';
+    const data = {
+      firstName: document.getElementById('regFirstName').value,
+      lastName: document.getElementById('regLastName').value,
+      age: Number(document.getElementById('regAge').value),
+      gender: document.getElementById('regGender').value,
+      location: document.getElementById('regLocation').value,
+      email: document.getElementById('regEmail').value,
+      password: document.getElementById('regPassword').value
+    };
+    const res = await STORE.register(data);
+    if (res.success) { showAlert('Account created — redirecting…','success'); setTimeout(()=>redirectForRole(res.user.role), 500); }
+    else { showAlert(res.message, 'error'); btn.disabled = false; btn.textContent = 'Create account'; }
+  });
+
+  document.getElementById('authModal').addEventListener('click', function(e){ if (e.target === this) closeAuth(); });
+</script>
+</body>
+</html>
