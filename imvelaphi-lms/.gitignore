@@ -1,6 +1,0 @@
-node_modules/
-.env
-uploads/videos/*
-uploads/docs/*
-!uploads/videos/.gitkeep
-!uploads/docs/.gitkeep
