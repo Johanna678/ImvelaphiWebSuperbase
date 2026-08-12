@@ -117,7 +117,7 @@ function mountChatWidget() {
       <div class="chat-head">
         <div>
           <strong>Imvelaphi Assistant</strong>
-          <span class="chat-sub">${user ? `Signed in as ${user.role}` : 'Ask me anything about the LMS'}</span>
+          <span class="chat-sub">${user ? `Signed in as ${user.role}` : 'Ask me anything about Imvelaphi Tech'}</span>
         </div>
         <button id="imvChatClose" class="chat-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
       </div>
@@ -179,7 +179,6 @@ function renderAppHeader(mountId, activeLabel) {
   mount.innerHTML = `
     <a href="index.html" class="logo">
       <div class="mark"><img src="images/logo.png" alt="Imvelaphi Technologies logo"></div>
-      <h1>Imvelaphi <span>LMS</span></h1>
     </a>
     <div class="nav-links">
       <span class="chip hide-mobile">${activeLabel}</span>
@@ -189,4 +188,50 @@ function renderAppHeader(mountId, activeLabel) {
       </div>
       <button class="btn btn-ghost btn-sm" onclick="STORE.logout()">Log out</button>
     </div>`;
+}
+
+/* ============================================================
+   Gallery lightbox — click a picture to view it full-size,
+   Next/Prev cycles through every image in the gallery grid.
+   ============================================================ */
+let lightboxIndex = 0;
+
+function getGalleryImages() {
+  return Array.from(document.querySelectorAll('.gallery-item img'));
+}
+
+function openLightbox(index) {
+  const images = getGalleryImages();
+  if (!images.length) return;
+  lightboxIndex = index;
+  showLightboxImage();
+  document.getElementById('lightbox').classList.add('open');
+  document.addEventListener('keydown', handleLightboxKey);
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.removeEventListener('keydown', handleLightboxKey);
+}
+
+function stepLightbox(delta) {
+  const images = getGalleryImages();
+  if (!images.length) return;
+  lightboxIndex = (lightboxIndex + delta + images.length) % images.length;
+  showLightboxImage();
+}
+
+function showLightboxImage() {
+  const images = getGalleryImages();
+  const current = images[lightboxIndex];
+  if (!current) return;
+  const img = document.getElementById('lightboxImg');
+  img.src = current.getAttribute('src');
+  img.alt = current.getAttribute('alt') || '';
+}
+
+function handleLightboxKey(e) {
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') stepLightbox(-1);
+  if (e.key === 'ArrowRight') stepLightbox(1);
 }

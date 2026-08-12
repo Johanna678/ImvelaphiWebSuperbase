@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Imvelaphi Technologies — LMS</title>
+<title>Imvelaphi Technologies</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -12,7 +12,6 @@
 <nav class="navbar">
   <a href="index.html" class="logo">
     <div class="mark"><img src="images/logo.png" alt="Imvelaphi Technologies logo"></div>
-    <h1>Imvelaphi <span>LMS</span></h1>
   </a>
   <div class="nav-links">
     <a class="link hide-mobile" href="#courses">Courses</a>
@@ -26,7 +25,6 @@
 <section class="hero">
   <div class="container hero-inner">
     <h2>Learn robotics/IoT &amp; innovation — <em>the Imvelaphi way</em></h2>
-    <p class="lead">Practical technology training for students and young innovators in South Africa, taught by the team behind Imvelaphi Technologies' robotics, biotech and 3D-printing work.</p>
     <div class="hero-buttons">
       <a class="btn btn-primary" onclick="openAuth('register')">Enrol as a student</a>
       <a class="btn btn-outline" href="#courses">Browse courses</a>
@@ -40,28 +38,46 @@
   </div>
 </section>
 
+<section class="section section-photo-dark" id="about">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">About us</div>
+      <h3>Imvelaphi Technologies</h3>
+      <p>Imvelaphi Technologies stands at the forefront of science, technology and engineering — pioneering robotics, biotechnology and 3D-printing solutions tailored to empower the disabled community, including custom, cost-effective 3D-printed prosthetic limbs with robotic elements.</p>
+    </div>
+
+    <div class="about-pair">
+      <div class="about-copy">
+        <h4>Hands-on learning for young innovators</h4>
+        <p>We teach real robotics, electronics and IoT skills through practical workshops. Every learner builds working projects and gains confidence in hardware, software and systems thinking.</p>
+      </div>
+      <div class="feature-shot about-image">
+        <img src="images/about-team.jpg" alt="Imvelaphi Technologies founder teaching an electronics and logic-gates workshop">
+        <p class="photo-caption">A real Imvelaphi Technologies workshop session — hands-on electronics and logic-gate training with our students.</p>
+      </div>
+    </div>
+
+    <div class="about-pair reverse">
+      <div class="feature-shot about-image">
+        <img src="images/about-prosthetic.jpg" alt="3D-printed robotic prosthetic hand built at Imvelaphi Technologies">
+        <p class="photo-caption">One of our 3D-printed, robotics-enabled prosthetic hands, built and wired in the Imvelaphi lab.</p>
+      </div>
+      <div class="about-copy">
+        <h4>Engineering solutions with purpose</h4>
+        <p>Our lab combines prosthetics, robotics and assistive technology to build affordable, real-world devices. The same design mindset powers our training programmes and community impact work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="courses">
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Featured tracks</div>
-      <h3>Pick a course, work through videos, prove it with a quiz</h3>
-      <p>Every course is a sequence of short videos, each followed by a quiz. Your dashboard tracks how far you've gotten and how well you scored.</p>
+      <h3>Pick a course, watch the lessons, and prove what you know with a quiz</h3>
+      <p>Explore the pictures below to see the lab work and projects behind every course.</p>
     </div>
     <div class="grid" id="courseGrid"></div>
-  </div>
-</section>
-
-<section class="section tint" id="about">
-  <div class="container about-wrap-stacked">
-    <div>
-      <div class="eyebrow">About us</div>
-      <h3 style="font-family:var(--font-display); font-size:1.9rem; color:var(--ink); margin:12px 0 18px;">Imvelaphi Technologies</h3>
-      <p>Imvelaphi Technologies stands at the forefront of science, technology and engineering — pioneering robotics, biotechnology and 3D-printing solutions tailored to empower the disabled community, including custom, cost-effective 3D-printed prosthetic limbs with robotic elements.</p>
-      <p>Beyond innovation, Imvelaphi invests in the next generation through skills-development programmes in robotics/IoT and innovation — which is exactly what this LMS is built to deliver.</p>
-    </div>
-    <div class="feature-shot">
-      <img src="images/tech-lab-showcase.jpg" alt="Imvelaphi Technologies Tech Lab showcase">
-    </div>
   </div>
 </section>
 
@@ -73,36 +89,43 @@
       <p>A look at the robotics, electronics and prosthetics work coming out of Imvelaphi Technologies.</p>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="images/gallery-1.jpg" alt="Imvelaphi lab work"></div>
-      <div class="gallery-item"><img src="images/gallery-2.jpg" alt="Imvelaphi lab work"></div>
-      <div class="gallery-item"><img src="images/gallery-3.jpg" alt="Imvelaphi lab work"></div>
-      <div class="gallery-item"><img src="images/gallery-4.jpg" alt="Imvelaphi lab work"></div>
-      <div class="gallery-item"><img src="images/gallery-5.jpg" alt="Imvelaphi lab work"></div>
-      <div class="gallery-item"><img src="images/lab-feature-2.jpg" alt="Imvelaphi tech lab render"></div>
+      <div class="gallery-item" onclick="openLightbox(0)"><img src="images/gallery-1.jpg" alt="Imvelaphi lab work"></div>
+      <div class="gallery-item" onclick="openLightbox(1)"><img src="images/gallery-2.jpg" alt="Imvelaphi lab work"></div>
+      <div class="gallery-item" onclick="openLightbox(2)"><img src="images/gallery-3.jpg" alt="Imvelaphi lab work"></div>
+      <div class="gallery-item" onclick="openLightbox(3)"><img src="images/gallery-4.jpg" alt="Imvelaphi lab work"></div>
+      <div class="gallery-item" onclick="openLightbox(4)"><img src="images/gallery-5.jpg" alt="Imvelaphi lab work"></div>
+      <div class="gallery-item" onclick="openLightbox(5)"><img src="images/lab-feature-2.jpg" alt="Imvelaphi tech lab render"></div>
     </div>
   </div>
 </section>
 
+<div class="lightbox" id="lightbox" onclick="if(event.target===this) closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+  <button class="lightbox-nav lightbox-prev" onclick="stepLightbox(-1)" aria-label="Previous picture">&#10094;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="stepLightbox(1)" aria-label="Next picture">&#10095;</button>
+</div>
+
 <section class="section dark">
-  <div class="container" style="text-align:center;">
-    <div class="rule center" style="margin-bottom:20px;"></div>
-    <h3 style="font-family:var(--font-display); font-size:1.8rem; margin-bottom:14px;">Three roles, one platform</h3>
-    <p style="color:rgba(255,255,255,0.6); max-width:560px; margin:0 auto 44px;">Students learn and track progress. Lecturers upload content and follow every learner's performance. Admins oversee the whole programme.</p>
+  <div class="container section-center">
+    <div class="rule center section-rule"></div>
+    <h3>Three roles, one platform</h3>
+    <p class="section-sub">Students learn and track progress. Lecturers upload content and follow every learner's performance. Admins oversee the whole programme.</p>
     <div class="grid">
-      <div class="card" style="background:rgba(255,255,255,0.04); box-shadow:none; border:1px solid rgba(255,255,255,0.1);">
+      <div class="card role-card">
         <div class="icon-badge"><i class="fa-solid fa-graduation-cap"></i></div>
-        <h4 style="color:#fff;">Student</h4>
-        <p style="color:rgba(255,255,255,0.55);">Watch course videos, take quizzes, and see your progress grow on your dashboard.</p>
+        <h4>Student</h4>
+        <p>Watch course videos, take quizzes, and see your progress grow on your dashboard.</p>
       </div>
-      <div class="card" style="background:rgba(255,255,255,0.04); box-shadow:none; border:1px solid rgba(255,255,255,0.1);">
+      <div class="card role-card">
         <div class="icon-badge"><i class="fa-solid fa-chalkboard-user"></i></div>
-        <h4 style="color:#fff;">Lecturer</h4>
-        <p style="color:rgba(255,255,255,0.55);">Upload videos and documents, and monitor every learner's progress and quiz scores.</p>
+        <h4>Lecturer</h4>
+        <p>Upload videos and documents, and monitor every learner's progress and quiz scores.</p>
       </div>
-      <div class="card" style="background:rgba(255,255,255,0.04); box-shadow:none; border:1px solid rgba(255,255,255,0.1);">
+      <div class="card role-card">
         <div class="icon-badge"><i class="fa-solid fa-user-shield"></i></div>
-        <h4 style="color:#fff;">Admin</h4>
-        <p style="color:rgba(255,255,255,0.55);">Oversee learners, lecturers and course catalogue across the programme.</p>
+        <h4>Admin</h4>
+        <p>Oversee learners, lecturers and course catalogue across the programme.</p>
       </div>
     </div>
   </div>
@@ -110,8 +133,8 @@
 
 <footer class="footer">
   <div class="container footer-inner">
-    <div style="display:flex; align-items:center; gap:12px;">
-      <img src="images/logo.png" alt="Imvelaphi Technologies logo" style="width:40px; height:40px; border-radius:9px; object-fit:cover;">
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Imvelaphi Technologies logo" class="footer-logo">
       <div>
         <h5>Imvelaphi Technologies</h5>
         <p>Robotics · Biotechnology · 3D printing · Skills development</p>
@@ -119,8 +142,8 @@
     </div>
     <div>
       <h5>Learn</h5>
-      <p><a href="#courses" style="text-decoration:none; color:inherit;">Course catalogue</a></p>
-      <p><a href="#gallery" style="text-decoration:none; color:inherit;">Gallery</a></p>
+      <p><a href="#courses" class="footer-link">Course catalogue</a></p>
+      <p><a href="#gallery" class="footer-link">Gallery</a></p>
     </div>
   </div>
   <div class="container fine">&copy; 2026 Imvelaphi Technologies Lab. All rights reserved.</div>
@@ -128,7 +151,7 @@
 
 <!-- Auth Modal -->
 <div id="authModal" class="modal-backdrop">
-  <div class="modal-box" style="position:relative;">
+  <div class="modal-box">
     <button class="close-x" onclick="closeAuth()"><i class="fa-solid fa-xmark"></i></button>
     <h2 id="authTitle">Welcome back</h2>
     <p class="modal-sub" id="authSub">Log in to continue your courses.</p>
@@ -144,13 +167,13 @@
         <label>Password</label>
         <input type="password" id="loginPassword" required placeholder="••••••••">
       </div>
-      <button type="submit" class="btn btn-primary" style="width:100%;">Log in</button>
+      <button type="submit" class="btn btn-primary btn-block">Log in</button>
       <p class="switch-line">New here? <a onclick="showRegister()">Create an account</a></p>
     </form>
 
     <!-- Register (students only — lecturer accounts are created by an admin) -->
     <form id="registerForm" class="hidden">
-      <p style="font-size:0.82rem; color:var(--muted); margin:-6px 0 18px;">This creates a <strong>student</strong> account and enrols you in every course. Lecturer and admin accounts are set up by the Imvelaphi team.</p>
+      <p class="modal-note">This creates a <strong>student</strong> account and enrols you in every course. Lecturer and admin accounts are set up by the Imvelaphi team.</p>
       <div class="field-row">
         <div class="field"><label>First name</label><input type="text" id="regFirstName" required></div>
         <div class="field"><label>Last name</label><input type="text" id="regLastName" required></div>
@@ -177,7 +200,7 @@
         <label>Password</label>
         <input type="password" id="regPassword" required minlength="4">
       </div>
-      <button type="submit" class="btn btn-primary" style="width:100%;">Create account</button>
+      <button type="submit" class="btn btn-primary btn-block">Create account</button>
       <p class="switch-line">Already registered? <a onclick="showLogin()">Log in</a></p>
     </form>
   </div>
@@ -223,7 +246,7 @@
     document.getElementById('loginForm').classList.add('hidden');
     document.getElementById('registerForm').classList.remove('hidden');
     document.getElementById('authTitle').textContent = 'Create your student account';
-    document.getElementById('authSub').textContent = 'Join Imvelaphi LMS and start learning.';
+    document.getElementById('authSub').textContent = 'Join Imvelaphi Tech and start learning.';
   }
   function showLogin() {
     document.getElementById('registerForm').classList.add('hidden');
