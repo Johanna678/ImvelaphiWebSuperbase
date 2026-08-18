@@ -200,6 +200,39 @@ function getGalleryImages() {
   return Array.from(document.querySelectorAll('.gallery-item img'));
 }
 
+/* ---------- Gallery carousel (one picture at a time, with arrows) ---------- */
+let galleryIndex = 0;
+
+function getGalleryItems() {
+  return Array.from(document.querySelectorAll('.gallery-carousel .gallery-item'));
+}
+
+function initGalleryCarousel() {
+  const items = getGalleryItems();
+  if (!items.length) return;
+  const dotsWrap = document.getElementById('galleryDots');
+  if (dotsWrap) {
+    dotsWrap.innerHTML = items
+      .map((_, i) => `<button class="gallery-dot${i === 0 ? ' active' : ''}" onclick="showGalleryImage(${i})" aria-label="Go to picture ${i + 1}"></button>`)
+      .join('');
+  }
+  showGalleryImage(0);
+}
+
+function showGalleryImage(index) {
+  const items = getGalleryItems();
+  if (!items.length) return;
+  galleryIndex = (index + items.length) % items.length;
+  items.forEach((item, i) => item.classList.toggle('active', i === galleryIndex));
+  const dots = document.querySelectorAll('.gallery-dot');
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === galleryIndex));
+}
+
+function nextGalleryImage() { showGalleryImage(galleryIndex + 1); }
+function prevGalleryImage() { showGalleryImage(galleryIndex - 1); }
+
+document.addEventListener('DOMContentLoaded', initGalleryCarousel);
+
 function openLightbox(index) {
   const images = getGalleryImages();
   if (!images.length) return;

@@ -81,21 +81,26 @@
   </div>
 </section>
 
-<section class="section" id="gallery">
+<section class="section section-gallery-dark" id="gallery">
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Gallery</div>
       <h3>Inside the lab</h3>
       <p>A look at the robotics, electronics and prosthetics work coming out of Imvelaphi Technologies.</p>
     </div>
-    <div class="gallery-grid">
-      <div class="gallery-item" onclick="openLightbox(0)"><img src="images/gallery-1.jpg" alt="Imvelaphi lab work"></div>
-      <div class="gallery-item" onclick="openLightbox(1)"><img src="images/gallery-2.jpg" alt="Imvelaphi lab work"></div>
-      <div class="gallery-item" onclick="openLightbox(2)"><img src="images/gallery-3.jpg" alt="Imvelaphi lab work"></div>
-      <div class="gallery-item" onclick="openLightbox(3)"><img src="images/gallery-4.jpg" alt="Imvelaphi lab work"></div>
-      <div class="gallery-item" onclick="openLightbox(4)"><img src="images/gallery-5.jpg" alt="Imvelaphi lab work"></div>
-      <div class="gallery-item" onclick="openLightbox(5)"><img src="images/lab-feature-2.jpg" alt="Imvelaphi tech lab render"></div>
+    <div class="gallery-carousel">
+      <button class="gallery-arrow gallery-prev" onclick="prevGalleryImage()" aria-label="Previous picture">&#10094;</button>
+      <div class="gallery-carousel-viewport">
+        <div class="gallery-item active" onclick="openLightbox(0)"><img src="images/gallery-1.jpg" alt="Imvelaphi lab work"></div>
+        <div class="gallery-item" onclick="openLightbox(1)"><img src="images/gallery-2.jpg" alt="Imvelaphi lab work"></div>
+        <div class="gallery-item" onclick="openLightbox(2)"><img src="images/gallery-3.jpg" alt="Imvelaphi lab work"></div>
+        <div class="gallery-item" onclick="openLightbox(3)"><img src="images/gallery-4.jpg" alt="Imvelaphi lab work"></div>
+        <div class="gallery-item" onclick="openLightbox(4)"><img src="images/gallery-5.jpg" alt="Imvelaphi lab work"></div>
+        <div class="gallery-item" onclick="openLightbox(5)"><img src="images/lab-feature-2.jpg" alt="Imvelaphi tech lab render"></div>
+      </div>
+      <button class="gallery-arrow gallery-next" onclick="nextGalleryImage()" aria-label="Next picture">&#10095;</button>
     </div>
+    <div class="gallery-dots" id="galleryDots"></div>
   </div>
 </section>
 
