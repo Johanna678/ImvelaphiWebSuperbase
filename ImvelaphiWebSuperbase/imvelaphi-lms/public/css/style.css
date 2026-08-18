@@ -170,6 +170,18 @@ img { max-width:100%; display:block; }
 .section.dark .section-head p { color:rgba(255,255,255,0.6); }
 .section.tint { background:var(--paper-dim); }
 
+/* Courses section — same warm dark gradient as the hero/gallery/about, for a consistent feel */
+.section-courses-dark {
+  background:
+    radial-gradient(circle at 82% 15%, rgba(181,101,29,0.30), transparent 55%),
+    radial-gradient(circle at 10% 90%, rgba(199,154,60,0.24), transparent 50%),
+    linear-gradient(180deg, var(--ink) 0%, #170D07 100%);
+  color:var(--white);
+}
+.section-courses-dark .section-head .eyebrow { color:var(--teal); }
+.section-courses-dark .section-head h3 { color:var(--white); }
+.section-courses-dark .section-head p { color:rgba(255,255,255,0.68); }
+
 /* ---------- Cards / grid ---------- */
 .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(270px,1fr)); gap:24px; }
 .card {
@@ -207,13 +219,13 @@ img { max-width:100%; display:block; }
 .about-wrap-stacked strong { color:var(--ink); }
 .about-wrap-stacked .feature-shot { margin-top:28px; }
 
-/* About section — black background, robot/hand artwork behind it, real lab photo alongside the copy */
+/* About section — same warm dark gradient as the hero/gallery, so the two feel like one theme */
 .section-photo-dark {
   position:relative;
   background:
-    linear-gradient(180deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.92) 100%),
-    url('../images/auth-hero.jpg') center 30%/cover no-repeat,
-    #000;
+    radial-gradient(circle at 82% 15%, rgba(181,101,29,0.30), transparent 55%),
+    radial-gradient(circle at 10% 90%, rgba(199,154,60,0.24), transparent 50%),
+    linear-gradient(180deg, var(--ink) 0%, #170D07 100%);
   color:#fff;
 }
 .section-photo-dark .eyebrow { color:var(--teal); }
