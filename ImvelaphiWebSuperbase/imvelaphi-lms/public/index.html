@@ -15,8 +15,10 @@
   </a>
   <div class="nav-links">
     <a class="link hide-mobile" href="#courses">Courses</a>
+    <a class="link hide-mobile" href="#kits">Shop kits</a>
     <a class="link hide-mobile" href="#about">About</a>
     <a class="link hide-mobile" href="#gallery">Gallery</a>
+    <button class="cart-trigger" onclick="toggleCart()" aria-label="Open shopping cart"><i class="fa-solid fa-basket-shopping"></i><span>Cart</span><b id="cartCount">0</b></button>
     <a class="link" onclick="openAuth('login')">Log in</a>
     <a class="btn btn-primary btn-sm" onclick="openAuth('register')">Get started</a>
   </div>
@@ -27,13 +29,39 @@
     <h2><em>Imvelaphi Technologies</em></h2>
     <div class="hero-buttons">
       <a class="btn btn-primary" onclick="openAuth('register')">Enrol as a student</a>
-      <a class="btn btn-outline" href="#courses">Browse courses</a>
+      <a class="btn btn-outline hero-outline" href="#kits">Shop robotics kits</a>
     </div>
     <div class="hero-stats">
-     <div class="stat"><b>Electronics</b><span>Circuits &amp; hardware</span></div>
-      <div class="stat"><b>Robotics / IoT</b><span>Sensors &amp; smart devices</span></div>
-      <div class="stat"><b>Innovation</b><span>Design &amp; build thinking</span></div>
+      <div class="stat"><b>20+ kits</b><span>Built for real projects</span></div>
+      <div class="stat"><b>South African</b><span>Designed in our lab</span></div>
+      <div class="stat"><b>Beginner-ready</b><span>Learn by building</span></div>
     </div>
+  </div>
+</section>
+
+<section class="section shop-section" id="kits">
+  <div class="container">
+    <div class="shop-intro">
+      <div class="section-head">
+        <div class="eyebrow">The Imvelaphi Lab Shop</div>
+        <h3>Take the lab home.</h3>
+        <p>Curated robotics kits with the parts, project guide and confidence to build something that moves, senses and thinks.</p>
+      </div>
+      <div class="shop-proof"><i class="fa-solid fa-shield-halved"></i><span><strong>Built for curious hands</strong><br>Tested in our learner workshops</span></div>
+    </div>
+    <div class="shop-toolbar">
+      <div class="shop-filters" role="group" aria-label="Filter kits">
+        <button class="filter-chip active" onclick="filterProducts('all', this)">All kits</button>
+        <button class="filter-chip" onclick="filterProducts('starter', this)">Starter</button>
+        <button class="filter-chip" onclick="filterProducts('classroom', this)">Classroom</button>
+        <button class="filter-chip" onclick="filterProducts('advanced', this)">Advanced</button>
+      </div>
+      <label class="shop-search"><i class="fa-solid fa-magnifying-glass"></i><input id="productSearch" type="search" placeholder="Search kits" oninput="renderProducts()"></label>
+    </div>
+    <div class="catalog-status" id="catalogStatus"></div>
+    <div class="product-grid" id="productGrid"></div>
+    <div class="bulk-order"><div><span class="eyebrow">For schools and makerspaces</span><h4>Building a bigger programme?</h4><p>Ask about classroom bundles, educator training and delivery for your institution.</p></div><a class="btn btn-outline" href="mailto:hello@imvelaphi.co.za?subject=Robotics%20kit%20bulk%20order">Request a quote <i class="fa-solid fa-arrow-right"></i></a></div>
+    <div class="shop-footnote"><i class="fa-solid fa-truck-fast"></i> Free delivery in South Africa on orders over R1,200 <span></span> <i class="fa-solid fa-book-open"></i> Includes a printed project guide</div>
   </div>
 </section>
 
@@ -109,6 +137,13 @@
   <img class="lightbox-img" id="lightboxImg" src="" alt="">
   <button class="lightbox-nav lightbox-next" onclick="stepLightbox(1)" aria-label="Next picture">&#10095;</button>
 </div>
+
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+  <div class="cart-head"><div><span class="eyebrow">Your order</span><h3>Shopping cart</h3></div><button class="close-x cart-close" onclick="toggleCart()" aria-label="Close cart"><i class="fa-solid fa-xmark"></i></button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty"><i class="fa-solid fa-basket-shopping"></i><p>Your cart is waiting for its first build.</p><a href="#kits" onclick="toggleCart()">Browse kits</a></div></div>
+  <div class="cart-summary"><div><span>Subtotal</span><strong id="cartTotal">R0</strong></div><small>Delivery calculated at checkout</small><button class="btn btn-primary btn-block" onclick="beginCheckout()">Continue to checkout <i class="fa-solid fa-arrow-right"></i></button></div>
+</aside>
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 
 <section class="section dark">
   <div class="container section-center">
@@ -228,6 +263,50 @@
       </div>`).join('');
   }
   renderCourses();
+
+  const products = {
+    maker: { name:'Advanced Maker Space Kit', price:46990, type:'advanced', image:'images/photo-10.jpeg', text:'A complete maker-space foundation for deeper engineering projects and creative exploration.' },
+    elf23: { name:'23-in-1 Customization Kit', price:10990, type:'classroom', image:'images/photo-11.jpeg', text:'Move beyond fixed models with a versatile platform for programming, design and systems thinking.' },
+    elf24: { name:'24-in-1 Customization Kit', price:10990, type:'classroom', image:'images/photo-12.jpeg', text:'A STEM engineering platform with up to 24 different intelligent projects to build and test.' },
+    elf26: { name:'26-in-1 Customization Kit', price:10990, type:'advanced', image:'images/photo-13.jpeg', text:'Push creative engineering further with a high-level kit for ambitious learners.' },
+    elf17: { name:'17-in-1 Customization Kit', price:10990, type:'classroom', image:'images/photo-14.jpeg', text:'Design, customize and program your own intelligent projects with a flexible learning system.' },
+    factory: { name:'AI Factory Robot Kit', price:12990, type:'advanced', image:'images/photo-15.jpeg', text:'Bring artificial intelligence into real-world industrial scenarios and guided builds.' },
+    sumo: { name:'Trigram SUMO Robot Kit', price:12990, type:'advanced', image:'images/photo-16.jpeg', text:'Hands-on robotics competition kit for balance, mechanics and strategy.' },
+    home: { name:'AI Smart Home Learning Kit', price:12990, type:'classroom', image:'images/tech-lab-showcase.jpg', text:'Explore smart home automation and practical AI through project-based learning.' },
+    agriculture: { name:'AI Smart Agriculture System', price:19990, type:'advanced', image:'images/gallery-5.jpg', text:'Learn how AI and smart technology are transforming agriculture.' },
+    starter: { name:'Starter Maker Space Kit', price:34990, type:'classroom', image:'images/lab-hero.jpg', text:'A serious creative toolkit for making, tinkering and problem-solving.' },
+    inventor: { name:'Home Inventor Kit', price:3990, type:'starter', image:'images/gallery-1.jpg', text:'Design and programme smart projects while learning core electronics and coding.' },
+    greenA: { name:'Our Green World - Python Learning Kit A', price:3990, type:'starter', image:'images/gallery-2.jpg', text:'Learn Python through sustainability, environmental awareness and real-world projects.' },
+    weebot: { name:'WeeBot mini STEM Robot V2.0', price:3990, type:'starter', image:'images/gallery-3.jpg', text:'An approachable robot for hands-on programming, engineering and robotics.' },
+    aiot: { name:'WeeCore Bot AIoT Programming Robot', price:3990, type:'classroom', image:'images/gallery-4.jpg', text:'Explore connected technology and artificial intelligence with guided builds.' },
+    elfK210: { name:'ELF AIoT K210 Mainboard', price:3990, type:'advanced', image:'images/gallery-5.jpg', text:'Build AIoT capability with machine vision, sensors and connected devices.' },
+    machine: { name:'AI Machine Learning Advanced Pack', price:3990, type:'advanced', image:'images/lab-feature-1.jpg', text:'Explore machine learning concepts through practical components and scenarios.' },
+    lunar: { name:'Lunar-Exploration Project Field Kit', price:3990, type:'classroom', image:'images/lab-feature-2.jpg', text:'A hands-on mission kit for testing, exploring and refining robotic ideas.' },
+    iot: { name:'IoT Learning Kit (ESP32)', price:4990, type:'starter', image:'images/gallery-2.jpg', text:'Build connected devices around the popular ESP32 microcontroller.' },
+    jeep: { name:'WeeBot Jeep STEM Classroom Robot Kit', price:5499, type:'classroom', image:'images/gallery-3.jpg', text:'Bring robotics into the classroom with a capable Bluetooth-controlled platform.' },
+    arduino: { name:'Arduino Uno KF2510 Robot Car Kit', price:8199, type:'classroom', image:'images/gallery-4.jpg', text:'A practical STEM build combining Arduino programming, electronics and robotics.' }
+  };
+  let activeFilter = 'all';
+  function filterProducts(filter, button) { activeFilter = filter; document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active')); button.classList.add('active'); renderProducts(); }
+  function renderProducts() {
+    const query = (document.getElementById('productSearch')?.value || '').toLowerCase();
+    const items = Object.entries(products).filter(([, product]) => (activeFilter === 'all' || product.type === activeFilter) && product.name.toLowerCase().includes(query));
+    document.getElementById('catalogStatus').textContent = `${items.length} ${items.length === 1 ? 'kit' : 'kits'} available`;
+    document.getElementById('productGrid').innerHTML = items.map(([id, product], index) => `<article class="product-card${index === 0 && activeFilter === 'all' ? ' featured-product' : ''}><div class="product-image"><img src="${product.image}" alt="${product.name}"><span class="product-badge product-badge-light">${product.type}</span></div><div class="product-body"><div class="product-meta"><span>IMVELAPHI LAB</span><span>South Africa</span></div><h4>${product.name}</h4><p>${product.text}</p><div class="product-bottom"><strong>R${product.price.toLocaleString()}</strong><button class="btn btn-primary btn-sm" onclick="addToCart('${id}')">Add to cart <i class="fa-solid fa-arrow-right"></i></button></div></div></article>`).join('') || '<p class="catalog-empty">No kits match that search. Try another name or category.</p>';
+  }
+  renderProducts();
+  let cart = JSON.parse(localStorage.getItem('imv_cart') || '{}');
+  function addToCart(id) { cart[id] = (cart[id] || 0) + 1; saveCart(); document.getElementById('cartDrawer').classList.add('open'); document.getElementById('cartOverlay').classList.add('open'); }
+  function saveCart() { localStorage.setItem('imv_cart', JSON.stringify(cart)); renderCart(); }
+  function updateCart(id, change) { cart[id] = (cart[id] || 0) + change; if (cart[id] <= 0) delete cart[id]; saveCart(); }
+  function toggleCart() { document.getElementById('cartDrawer').classList.toggle('open'); document.getElementById('cartOverlay').classList.toggle('open'); }
+  function renderCart() {
+    const entries = Object.entries(cart); const count = entries.reduce((sum, [, qty]) => sum + qty, 0); const total = entries.reduce((sum, [id, qty]) => sum + products[id].price * qty, 0);
+    document.getElementById('cartCount').textContent = count; document.getElementById('cartTotal').textContent = `R${total.toLocaleString()}`;
+    document.getElementById('cartItems').innerHTML = entries.length ? entries.map(([id, qty]) => { const p = products[id]; return `<div class="cart-item"><img src="${p.image}" alt=""><div><strong>${p.name}</strong><span>R${p.price.toLocaleString()}</span><div class="qty"><button onclick="updateCart('${id}', -1)" aria-label="Decrease quantity">−</button><b>${qty}</b><button onclick="updateCart('${id}', 1)" aria-label="Increase quantity">+</button></div></div></div>`; }).join('') : '<div class="cart-empty"><i class="fa-solid fa-basket-shopping"></i><p>Your cart is waiting for its first build.</p><a href="#kits" onclick="toggleCart()">Browse kits</a></div>';
+  }
+  function beginCheckout() { if (!Object.keys(cart).length) return; alert('Checkout is ready to connect to your preferred payment provider.'); }
+  renderCart();
 
   // If already logged in, send straight to the right dashboard
   (function redirectIfSession(){
